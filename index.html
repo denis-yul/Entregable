@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2347F5">
+  <title>Control de asistencia</title>
+
+  <!-- Tipografía Lexend (si no carga, se usa una fuente del sistema) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap">
+
+  <!-- Estilos y script en archivos aparte -->
+  <link rel="stylesheet" href="assets/css/css/login.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <!-- PANTALLA 1: Inicio de sesión -->
+  <section class="pantalla-sesion" id="sesion">
+
+    <!-- Foto de la sala (para usar la de Figma: cambia el src por img/foto-sala.jpg) -->
+    <img class="foto-sala" src="img/foto-sala.svg" alt="Persona presentando en una sala con colaboradores sentados">
+
+    <!-- Formulario de inicio de sesión -->
+    <form class="formulario-sesion">
+
+      <!-- Título del formulario -->
+      <h2 class="titulo-sesion">INICIAR SESIÓN</h2>
+
+      <!-- Correo electrónico -->
+      <label class="etiqueta-correo" for="correo">Correo electrónico</label>
+      <input class="campo-correo" id="correo" type="email" placeholder="ejemplo@gmail.com" autocomplete="email" required>
+
+      <!-- Contraseña -->
+      <label class="etiqueta-contrasena" for="contrasena">Contraseña</label>
+      <input class="campo-contrasena" id="contrasena" type="password" placeholder="contraseña" autocomplete="current-password" required>
+
+      <!-- Botón para ingresar -->
+      <button class="boton-ingresar" type="submit">INGRESAR</button>
+    </form>
+  </section>
+
+  <!-- PANTALLA 2: Panel de inicio -->
+  <section class="pantalla-panel" id="panel" hidden>
+
+    <!-- Franja superior con el botón de la esquina -->
+    <header class="cabecera-panel">
+      <!-- Botón de la esquina (cierra la sesión) -->
+      <button class="boton-esquina" type="button" aria-label="Cerrar sesión"></button>
+    </header>
+
+    <!-- Tarjeta: Trabajadores -->
+    <article class="tarjeta-trabajadores">
+      <img class="icono-trabajadores" src="img/icono-trabajadores.svg" alt="">
+      <span class="texto-trabajadores">Trabajadores</span>
+    </article>
+
+    <!-- Tarjeta: Tardanzas -->
+    <article class="tarjeta-tardanzas">
+      <img class="icono-tardanzas" src="img/icono-tardanzas.svg" alt="">
+      <span class="texto-tardanzas">Tardanzas</span>
+    </article>
+
+    <!-- Tarjeta: Presentes -->
+    <article class="tarjeta-presentes">
+      <img class="icono-presentes" src="img/icono-presentes.svg" alt="">
+      <span class="texto-presentes">Presentes</span>
+    </article>
+
+    <!-- Tarjeta: Faltaron -->
+    <article class="tarjeta-faltaron">
+      <img class="icono-faltaron" src="img/icono-faltaron.svg" alt="">
+      <span class="texto-faltaron">Faltaron</span>
+    </article>
+
+    <!-- Barra ancha para marcar asistencia con el rostro -->
+    <a class="barra-seleccion" href="#rostro">
+      <img class="icono-barra" src="img/icono-rostro.svg" alt="">
+      <span class="texto-marcar">Marcar asistencia</span>
+      <small class="subtexto-marcar">Rápido</small>
+      <span class="flecha-barra" aria-hidden="true">›</span>
+    </a>
+
+    <!-- Barra de navegación inferior -->
+    <nav class="barra-navegacion">
+      <!-- Enlace: Inicio -->
+      <a class="enlace-inicio" href="#panel" aria-current="page">
+        <img class="icono-inicio" src="img/icono-inicio.svg" alt="">
+        <span class="nombre-inicio">Inicio</span>
+      </a>
+      <!-- Enlace: Trabajadores -->
+      <a class="enlace-trabajadores" href="#registro">
+        <img class="icono-personas" src="img/icono-personas.svg" alt="">
+        <span class="nombre-personas">Trabajadores</span>
+      </a>
+      <!-- Enlace: Asistencia -->
+      <a class="enlace-asistencia" href="#registro">
+        <img class="icono-reloj" src="img/icono-reloj.svg" alt="">
+        <span class="nombre-asistencia">Asistencia</span>
+      </a>
+    </nav>
+  </section>
+
+  <!-- PANTALLA 3: Escaneo de rostro -->
+  <section class="pantalla-rostro" id="rostro" hidden>
+
+    <!-- Barra verde menta de estado -->
+    <div class="barra-estado"></div>
+
+    <!-- Instrucción para el usuario -->
+    <p class="texto-instruccion">COLOCA TU ROSTRO EN EL CENTRO</p>
+
+    <!-- Círculo de la cámara (toca o presiona Enter para escanear) -->
+    <div class="circulo-camara" role="button" tabindex="0" aria-label="Iniciar escaneo facial">
+      <!-- Ícono de rostro con marcos de escaneo -->
+      <img class="icono-rostro" src="img/icono-rostro.svg" alt="">
+    </div>
+  </section>
+
+  <!-- PANTALLA 4: Tabla de asistencia -->
+  <section class="pantalla-registro" id="registro" hidden>
+
+    <!-- Tarjeta blanca que contiene la tabla -->
+    <div class="tarjeta-registro">
+
+      <!-- Tabla de entradas y salidas -->
+      <table class="tabla-asistencia">
+
+        <!-- Cabecera de la tabla -->
+        <thead class="cabecera-tabla">
+          <tr class="fila-cabecera">
+            <th class="titulo-colaborador" scope="col">Colaborador</th>
+            <th class="titulo-entrada" scope="col">Entrada</th>
+            <th class="titulo-salida" scope="col">Salida</th>
+          </tr>
+        </thead>
+
+        <!-- Cuerpo de la tabla: 9 filas vacías como en el boceto -->
+        <tbody class="cuerpo-tabla">
+          <tr class="fila-registro"><td class="celda-colaborador"></td><td class="celda-entrada"></td><td class="celda-salida"></td></tr>
+          <tr class="fila-registro"><td class="celda-colaborador"></td><td class="celda-entrada"></td><td class="celda-salida"></td></tr>
+          <tr class="fila-registro"><td class="celda-colaborador"></td><td class="celda-entrada"></td><td class="celda-salida"></td></tr>
+          <tr class="fila-registro"><td class="celda-colaborador"></td><td class="celda-entrada"></td><td class="celda-salida"></td></tr>
+          <tr class="fila-registro"><td class="celda-colaborador"></td><td class="celda-entrada"></td><td class="celda-salida"></td></tr>
+          <tr class="fila-registro"><td class="celda-colaborador"></td><td class="celda-entrada"></td><td class="celda-salida"></td></tr>
+          <tr class="fila-registro"><td class="celda-colaborador"></td><td class="celda-entrada"></td><td class="celda-salida"></td></tr>
+          <tr class="fila-registro"><td class="celda-colaborador"></td><td class="celda-entrada"></td><td class="celda-salida"></td></tr>
+          <tr class="fila-registro"><td class="celda-colaborador"></td><td class="celda-entrada"></td><td class="celda-salida"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</body>
+</html>

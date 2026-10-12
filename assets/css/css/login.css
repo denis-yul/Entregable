@@ -1,0 +1,652 @@
+/* =========================================================
+   CONTROL DE ASISTENCIA - Estilos
+   Enfoque mobile-first:
+   - Base: celular
+   - @media (min-width: 834px): tablet
+   - @media (min-width: 1100px): laptop
+   ========================================================= */
+
+
+/* ---------- Variables de color y medidas ---------- */
+:root {
+  --tinta: #121B4D;      /* azul noche: textos y fondo de la pantalla de rostro */
+  --cobalto: #2347F5;    /* azul principal */
+  --menta: #35E8C0;      /* acento verde menta */
+  --amarillo: #FFD23F;   /* botón principal y tarjeta Tardanzas */
+  --verde: #2ED47A;      /* tarjeta Presentes */
+  --coral: #FF4D6D;      /* tarjeta Faltaron */
+  --celeste: #4CC9FF;    /* tarjeta Trabajadores */
+  --hielo: #EAF0FF;      /* fondo claro */
+  --blanco: #FFFFFF;
+  --radio: 1.25rem;
+  --sombra: 0 10px 28px rgba(18, 27, 77, 0.22);
+  --foco: var(--cobalto);
+
+  font-family: "Lexend", "Trebuchet MS", system-ui, sans-serif;
+}
+
+
+/* ---------- Reinicio y base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--tinta);
+  background: var(--hielo);
+  line-height: 1.5;
+}
+
+/* Las pantallas ocultas con "hidden" no deben mostrarse nunca */
+[hidden] {
+  display: none !important;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Foco visible para quien navega con teclado */
+:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   PANTALLA 1: INICIO DE SESIÓN
+   Celular: foto arriba y tarjeta que se monta sobre ella.
+   ========================================================= */
+.pantalla-sesion {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cobalto);
+}
+
+/* Foto de la sala */
+.foto-sala {
+  width: 100%;
+  height: 38svh;
+  object-fit: cover;
+  border-radius: 0 0 2rem 2rem;
+}
+
+/* Tarjeta blanca del formulario */
+.formulario-sesion {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: -2.5rem 1rem 1.5rem;
+  padding: 1.75rem 1.5rem 2rem;
+  background: var(--blanco);
+  border-radius: 1.75rem;
+  box-shadow: var(--sombra);
+}
+
+.titulo-sesion {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.etiqueta-correo,
+.etiqueta-contrasena {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* Campos de texto */
+.campo-correo,
+.campo-contrasena {
+  padding: 0.85rem 1rem;
+  font: inherit;
+  color: var(--tinta);
+  background: #DDEBFF;
+  border: 2px solid transparent;
+  border-radius: 0.9rem;
+}
+
+.campo-correo::placeholder,
+.campo-contrasena::placeholder {
+  color: #4F5F9E;
+}
+
+.campo-correo:focus,
+.campo-contrasena:focus {
+  background: var(--blanco);
+  border-color: var(--cobalto);
+  outline: none;
+}
+
+/* Botón principal */
+.boton-ingresar {
+  margin-top: 1.25rem;
+  padding: 0.95rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--tinta);
+  background: var(--amarillo);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #D9A900;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.boton-ingresar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #D9A900;
+}
+
+.boton-ingresar:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #D9A900;
+}
+
+
+/* =========================================================
+   PANTALLA 2: PANEL DE INICIO
+   Celular: cuadrícula de 2 columnas (tarjetas 2x2).
+   ========================================================= */
+.pantalla-panel {
+  --margen: 1rem;
+
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto auto 1fr;
+  gap: 0.9rem;
+  padding: 0 var(--margen) 1rem;
+  align-content: start;
+  background: var(--hielo);
+}
+
+/* Franja superior a todo el ancho */
+.cabecera-panel {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0 calc(var(--margen) * -1) 0.25rem;
+  padding: 0.75rem var(--margen);
+  background: var(--blanco);
+  box-shadow: 0 2px 10px rgba(18, 27, 77, 0.12);
+}
+
+/* Botón redondo de la esquina */
+.boton-esquina {
+  width: 2.75rem;
+  height: 2.75rem;
+  background: var(--celeste) url("../img/icono-salir.svg") center / 55% no-repeat;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Tarjetas de resumen (icono arriba, texto abajo) */
+.tarjeta-trabajadores,
+.tarjeta-tardanzas,
+.tarjeta-presentes,
+.tarjeta-faltaron {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 9.5rem;
+  padding: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--tinta);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.tarjeta-trabajadores { background: var(--celeste); }
+.tarjeta-tardanzas    { background: var(--amarillo); }
+.tarjeta-presentes    { background: var(--verde); }
+.tarjeta-faltaron     { background: var(--coral); }
+
+/* Íconos de las tarjetas dentro de un círculo blanco */
+.icono-trabajadores,
+.icono-tardanzas,
+.icono-presentes,
+.icono-faltaron {
+  width: 3.75rem;
+  height: 3.75rem;
+  padding: 0.8rem;
+  background: var(--blanco);
+  border-radius: 50%;
+}
+
+/* Barra ancha "Marcar asistencia" */
+.barra-seleccion {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "icono titulo flecha"
+    "icono sub    flecha";
+  column-gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  color: var(--blanco);
+  text-decoration: none;
+  background: var(--cobalto);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.icono-barra {
+  grid-area: icono;
+  width: 3rem;
+  height: 3rem;
+}
+
+.texto-marcar {
+  grid-area: titulo;
+  align-self: end;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.subtexto-marcar {
+  grid-area: sub;
+  align-self: start;
+  font-size: 0.85rem;
+  color: #E6EEFF;
+}
+
+.flecha-barra {
+  grid-area: flecha;
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding-bottom: 0.15rem;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--tinta);
+  background: var(--menta);
+  border-radius: 50%;
+}
+
+/* Barra de navegación flotante, pegada abajo */
+.barra-navegacion {
+  grid-column: 1 / -1;
+  align-self: end;
+  position: sticky;
+  bottom: 0.75rem;
+  display: flex;
+  justify-content: space-around;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background: var(--blanco);
+  border-radius: 2rem;
+  box-shadow: var(--sombra);
+}
+
+.enlace-inicio,
+.enlace-trabajadores,
+.enlace-asistencia {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--tinta);
+  text-decoration: none;
+  border-radius: 1.4rem;
+}
+
+.icono-inicio,
+.icono-personas,
+.icono-reloj {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+/* Enlace de la pantalla actual: fondo azul e ícono blanco */
+.barra-navegacion a[aria-current="page"] {
+  color: var(--blanco);
+  background: var(--cobalto);
+}
+
+.barra-navegacion a[aria-current="page"] img {
+  filter: brightness(0) invert(1);
+}
+
+
+/* =========================================================
+   PANTALLA 3: ESCANEO DE ROSTRO
+   Celular: el círculo va ARRIBA y la barra y el texto debajo.
+   ========================================================= */
+.pantalla-rostro {
+  --foco: var(--menta);
+
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1.25rem;
+  overflow: hidden;            /* evita que los anillos animados generen scroll */
+  color: var(--blanco);
+  background: var(--tinta);
+}
+
+/* Círculo de la cámara (lo más llamativo de la app) */
+.circulo-camara {
+  order: -1;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(72vw, 20rem);
+  aspect-ratio: 1;
+  background: var(--cobalto);
+  border: 6px solid var(--menta);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.icono-rostro {
+  width: 48%;
+  height: auto;
+}
+
+/* Anillos que laten para llamar la atención */
+.circulo-camara::before,
+.circulo-camara::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 3px solid var(--menta);
+  border-radius: 50%;
+  opacity: 0;
+  animation: pulso 2.6s ease-out infinite;
+}
+
+.circulo-camara::after {
+  animation-delay: 1.3s;
+}
+
+/* Mientras escanea, los anillos laten más rápido */
+.circulo-camara.escaneando::before,
+.circulo-camara.escaneando::after {
+  animation-duration: 0.9s;
+}
+
+@keyframes pulso {
+  from { transform: scale(1);    opacity: 0.7; }
+  to   { transform: scale(1.45); opacity: 0; }
+}
+
+.barra-estado {
+  width: min(70vw, 16rem);
+  height: 1.4rem;
+  background: var(--menta);
+  border-radius: 999px;
+}
+
+.texto-instruccion {
+  max-width: 18rem;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+
+/* =========================================================
+   PANTALLA 4: TABLA DE ASISTENCIA
+   ========================================================= */
+.pantalla-registro {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: var(--hielo);
+}
+
+.tarjeta-registro {
+  width: 100%;
+  max-width: 62rem;
+  padding: 0.75rem;
+  overflow-x: auto;            /* si la pantalla es muy angosta, la tabla se desliza */
+  background: var(--blanco);
+  border-radius: 1.5rem;
+  box-shadow: var(--sombra);
+}
+
+.tabla-asistencia {
+  width: 100%;
+  min-width: 20rem;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Encabezados */
+.titulo-colaborador,
+.titulo-entrada,
+.titulo-salida {
+  padding: 0.9rem 0.75rem;
+  font-weight: 600;
+  color: var(--blanco);
+  text-align: center;
+  background: var(--cobalto);
+}
+
+.titulo-colaborador {
+  width: 44%;
+  border-top-left-radius: 1rem;
+}
+
+.titulo-salida {
+  border-top-right-radius: 1rem;
+}
+
+/* Celdas vacías con altura para escribir */
+.celda-colaborador,
+.celda-entrada,
+.celda-salida {
+  height: 2.9rem;
+  border-right: 1px solid #C9D6FF;
+  border-bottom: 1px solid #C9D6FF;
+}
+
+.celda-salida {
+  border-right: 0;
+}
+
+/* Filas alternadas y resaltado al pasar el cursor */
+.fila-registro:nth-child(even) {
+  background: #F2F6FF;
+}
+
+.fila-registro:hover {
+  background: #DDEBFF;
+}
+
+
+/* =========================================================
+   TABLET (desde 834px)
+   - Sesión: tarjeta a la IZQUIERDA y foto a la derecha.
+   - Panel: la barra "Marcar asistencia" sube y las 4 tarjetas
+     pasan a una sola fila.
+   - Rostro: círculo a la izquierda y texto a la derecha.
+   ========================================================= */
+@media (min-width: 834px) {
+
+  /* Pantalla 1 */
+  .pantalla-sesion {
+    display: grid;
+    grid-template-columns: minmax(24rem, 1fr) 1.15fr;
+    align-items: center;
+  }
+
+  .foto-sala {
+    grid-column: 2;
+    grid-row: 1;
+    height: 100svh;
+    border-radius: 2.5rem 0 0 2.5rem;
+  }
+
+  .formulario-sesion {
+    grid-column: 1;
+    grid-row: 1;
+    width: min(26rem, calc(100% - 3rem));
+    margin: 0 auto;
+  }
+
+  /* Pantalla 2 */
+  .pantalla-panel {
+    --margen: 2rem;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto auto 1fr;
+    gap: 1.25rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .cabecera-panel {
+    grid-row: 1;
+  }
+
+  .barra-seleccion {
+    grid-row: 2;
+  }
+
+  .tarjeta-trabajadores,
+  .tarjeta-tardanzas,
+  .tarjeta-presentes,
+  .tarjeta-faltaron {
+    grid-row: 3;
+    min-height: 12rem;
+    font-size: 1.1rem;
+  }
+
+  .barra-navegacion {
+    grid-row: 4;
+    justify-self: center;
+    width: min(30rem, 100%);
+  }
+
+  /* Pantalla 3 */
+  .pantalla-rostro {
+    display: grid;
+    grid-template-columns: auto minmax(0, 22rem);
+    grid-template-areas:
+      "circulo barra"
+      "circulo texto";
+    justify-content: center;
+    align-content: center;
+    column-gap: 4rem;
+    row-gap: 1.25rem;
+  }
+
+  .circulo-camara {
+    grid-area: circulo;
+    width: min(34vw, 26rem);
+  }
+
+  .barra-estado {
+    grid-area: barra;
+    align-self: end;
+    width: 100%;
+  }
+
+  .texto-instruccion {
+    grid-area: texto;
+    align-self: start;
+    max-width: none;
+    font-size: 1.4rem;
+    text-align: left;
+  }
+
+  /* Pantalla 4 */
+  .tarjeta-registro {
+    padding: 1.25rem;
+  }
+
+  .titulo-colaborador,
+  .titulo-entrada,
+  .titulo-salida {
+    font-size: 1.1rem;
+  }
+
+  .celda-colaborador,
+  .celda-entrada,
+  .celda-salida {
+    height: 3.25rem;
+  }
+}
+
+
+/* =========================================================
+   LAPTOP (desde 1100px)
+   Contenido centrado con ancho máximo.
+   ========================================================= */
+@media (min-width: 1100px) {
+
+  .pantalla-sesion {
+    grid-template-columns: minmax(28rem, 1fr) 1.3fr;
+  }
+
+  .pantalla-panel {
+    --margen: max(2rem, calc((100vw - 72rem) / 2));
+  }
+
+  .barra-seleccion {
+    padding: 1.4rem 1.75rem;
+  }
+
+  .texto-marcar {
+    font-size: 1.35rem;
+  }
+
+  .tarjeta-trabajadores,
+  .tarjeta-tardanzas,
+  .tarjeta-presentes,
+  .tarjeta-faltaron {
+    min-height: 14rem;
+    font-size: 1.25rem;
+  }
+
+  .icono-trabajadores,
+  .icono-tardanzas,
+  .icono-presentes,
+  .icono-faltaron {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD: sin animaciones si la persona lo prefiere
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .circulo-camara::before,
+  .circulo-camara::after {
+    animation: none;
+  }
+
+  .boton-ingresar {
+    transition: none;
+  }
+}
