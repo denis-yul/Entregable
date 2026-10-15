@@ -112,3 +112,8 @@
   // ---------- Arranque ----------
   mostrar(leerDestino());
 })();
+
+// Botón de la esquina: cerrar sesión y volver al login
+document.querySelector('.boton-esquina')?.addEventListener('click', () => {
+  window.location.href = 'index.html';
+});
