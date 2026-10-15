@@ -1,0 +1,70 @@
+/* =========================================================
+   PANTALLA 4: TABLA DE ASISTENCIA
+   ========================================================= */
+.pantalla-registro {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: var(--hielo);
+}
+
+.tarjeta-registro {
+  width: 100%;
+  max-width: 62rem;
+  padding: 0.75rem;
+  overflow-x: auto;            /* si la pantalla es muy angosta, la tabla se desliza */
+  background: var(--blanco);
+  border-radius: 1.5rem;
+  box-shadow: var(--sombra);
+}
+
+.tabla-asistencia {
+  width: 100%;
+  min-width: 20rem;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Encabezados */
+.titulo-colaborador,
+.titulo-entrada,
+.titulo-salida {
+  padding: 0.9rem 0.75rem;
+  font-weight: 600;
+  color: var(--blanco);
+  text-align: center;
+  background: var(--cobalto);
+}
+
+.titulo-colaborador {
+  width: 44%;
+  border-top-left-radius: 1rem;
+}
+
+.titulo-salida {
+  border-top-right-radius: 1rem;
+}
+
+/* Celdas vacías con altura para escribir */
+.celda-colaborador,
+.celda-entrada,
+.celda-salida {
+  height: 2.9rem;
+  border-right: 1px solid #C9D6FF;
+  border-bottom: 1px solid #C9D6FF;
+}
+
+.celda-salida {
+  border-right: 0;
+}
+
+/* Filas alternadas y resaltado al pasar el cursor */
+.fila-registro:nth-child(even) {
+  background: #F2F6FF;
+}
+
+.fila-registro:hover {
+  background: #DDEBFF;
+}

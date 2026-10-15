@@ -1,0 +1,80 @@
+/* =========================================================
+   PANTALLA 3: ESCANEO DE ROSTRO
+   Celular: el círculo va ARRIBA y la barra y el texto debajo.
+   ========================================================= */
+.pantalla-rostro {
+  --foco: var(--menta);
+
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1.25rem;
+  overflow: hidden;            /* evita que los anillos animados generen scroll */
+  color: var(--blanco);
+  background: var(--tinta);
+}
+
+/* Círculo de la cámara (lo más llamativo de la app) */
+.circulo-camara {
+  order: -1;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(72vw, 20rem);
+  aspect-ratio: 1;
+  background: var(--cobalto);
+  border: 6px solid var(--menta);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.icono-rostro {
+  width: 48%;
+  height: auto;
+}
+
+/* Anillos que laten para llamar la atención */
+.circulo-camara::before,
+.circulo-camara::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 3px solid var(--menta);
+  border-radius: 50%;
+  opacity: 0;
+  animation: pulso 2.6s ease-out infinite;
+}
+
+.circulo-camara::after {
+  animation-delay: 1.3s;
+}
+
+/* Mientras escanea, los anillos laten más rápido */
+.circulo-camara.escaneando::before,
+.circulo-camara.escaneando::after {
+  animation-duration: 0.9s;
+}
+
+@keyframes pulso {
+  from { transform: scale(1);    opacity: 0.7; }
+  to   { transform: scale(1.45); opacity: 0; }
+}
+
+.barra-estado {
+  width: min(70vw, 16rem);
+  height: 1.4rem;
+  background: var(--menta);
+  border-radius: 999px;
+}
+
+.texto-instruccion {
+  max-width: 18rem;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
