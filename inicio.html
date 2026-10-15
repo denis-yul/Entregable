@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de inicio</title>
+    <link rel="stylesheet" href="assets/css/inicio.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+      <!-- PANTALLA 2: Panel de inicio -->
+  <section class="pantalla-panel" id="panel" hidden>
+
+    <!-- Franja superior con el botón de la esquina -->
+    <header class="cabecera-panel">
+      <!-- Botón de la esquina (cierra la sesión) -->
+      <button class="boton-esquina" type="button" aria-label="Cerrar sesión"></button>
+    </header>
+
+    <!-- Tarjeta: Trabajadores -->
+    <article class="tarjeta-trabajadores">
+      <img class="icono-trabajadores" src="img/icono-trabajadores.svg" alt="">
+      <span class="texto-trabajadores">Trabajadores</span>
+    </article>
+
+    <!-- Tarjeta: Tardanzas -->
+    <article class="tarjeta-tardanzas">
+      <img class="icono-tardanzas" src="img/icono-tardanzas.svg" alt="">
+      <span class="texto-tardanzas">Tardanzas</span>
+    </article>
+
+    <!-- Tarjeta: Presentes -->
+    <article class="tarjeta-presentes">
+      <img class="icono-presentes" src="img/icono-presentes.svg" alt="">
+      <span class="texto-presentes">Presentes</span>
+    </article>
+
+    <!-- Tarjeta: Faltaron -->
+    <article class="tarjeta-faltaron">
+      <img class="icono-faltaron" src="img/icono-faltaron.svg" alt="">
+      <span class="texto-faltaron">Faltaron</span>
+    </article>
+
+    <!-- Barra ancha para marcar asistencia con el rostro -->
+    <a class="barra-seleccion" href="#rostro">
+      <img class="icono-barra" src="img/icono-rostro.svg" alt="">
+      <span class="texto-marcar">Marcar asistencia</span>
+      <small class="subtexto-marcar">Rápido</small>
+      <span class="flecha-barra" aria-hidden="true">›</span>
+    </a>
+
+    <!-- Barra de navegación inferior -->
+    <nav class="barra-navegacion">
+      <!-- Enlace: Inicio -->
+      <a class="enlace-inicio" href="#panel" aria-current="page">
+        <img class="icono-inicio" src="img/icono-inicio.svg" alt="">
+        <span class="nombre-inicio">Inicio</span>
+      </a>
+      <!-- Enlace: Trabajadores -->
+      <a class="enlace-trabajadores" href="#registro">
+        <img class="icono-personas" src="img/icono-personas.svg" alt="">
+        <span class="nombre-personas">Trabajadores</span>
+      </a>
+      <!-- Enlace: Asistencia -->
+      <a class="enlace-asistencia" href="#registro">
+        <img class="icono-reloj" src="img/icono-reloj.svg" alt="">
+        <span class="nombre-asistencia">Asistencia</span>
+      </a>
+    </nav>
+  </section>
+</body>
+</html>
