@@ -117,3 +117,33 @@
 document.querySelector('.boton-esquina')?.addEventListener('click', () => {
   window.location.href = 'index.html';
 });
+
+// Cámara: se abre al tocar el círculo
+const circulo = document.querySelector('.circulo-camara');
+const video = document.querySelector('.video-camara');
+const lienzo = document.querySelector('.lienzo-captura');
+const icono = document.querySelector('.icono-rostro');
+
+async function iniciarCamara() {
+  try {
+    const flujo = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'user' },
+      audio: false
+    });
+    video.srcObject = flujo;
+    video.hidden = false;
+    if (icono) icono.hidden = true;
+  } catch (error) {
+    alert('No se pudo abrir la cámara. Revisa los permisos del navegador.');
+  }
+}
+
+// Toma una foto del video (para enviarla a la detección de rostro)
+function capturarFoto() {
+  lienzo.width = video.videoWidth;
+  lienzo.height = video.videoHeight;
+  lienzo.getContext('2d').drawImage(video, 0, 0);
+  return lienzo.toDataURL('image/jpeg');
+}
+
+circulo?.addEventListener('click', iniciarCamara);

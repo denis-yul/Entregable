@@ -13,27 +13,13 @@
         <p class="texto-instruccion">COLOCA TU ROSTRO EN EL CENTRO</p>
         <div class="circulo-camara" role="button" tabindex="0" aria-label="Iniciar escaneo facial">
             <img class="icono-rostro" src="assets/image/amgen_2.png" alt="Ícono de escaneo facial">
+            <!-- Video de la cámara (se muestra al iniciar el escaneo) -->
+            <video class="video-camara" autoplay playsinline muted hidden></video>
         </div>
-
-            <!-- Barra de navegación inferior -->
-    <nav class="barra-navegacion">
-      <!-- Enlace: Inicio -->
-      <a class="enlace-inicio" href="#panel" aria-current="page">
-        <img class="icono-inicio" src="assets/icons/Group.png" alt="">
-        <span class="nombre-inicio">Inicio</span>
-      </a>
-      <!-- Enlace: Trabajadores -->
-      <a class="enlace-trabajadores" href="#registro">
-        <img class="icono-personas" src="assets/icons/user.png" alt="">
-        <span class="nombre-personas">Trabajadores</span>
-      </a>
-      <!-- Enlace: Asistencia -->
-      <a class="enlace-asistencia" href="#registro">
-        <img class="icono-reloj" src="assets/icons/Time.png" alt="">
-        <span class="nombre-asistencia">Asistencia</span>
-      </a>
-    </nav>
     </section>
+
+    <!-- Lienzo para capturar el rostro (no se ve) -->
+    <canvas class="lienzo-captura" hidden></canvas>
 
     <!-- Script al final del body para mejor rendimiento -->
     <script src="assets/js/mein.js"></script>
