@@ -2,7 +2,18 @@
    PANTALLA 3: ESCANEO DE ROSTRO
    Celular: el círculo va ARRIBA y la barra y el texto debajo.
    ========================================================= */
-.pantalla-rostro {
+:root {
+  --tinta: #121B4D;      /* azul noche: textos y fondo de la pantalla de rostro */
+  --cobalto: #2347F5;    /* azul principal */
+  --menta: #35E8C0;      /* acento verde menta */
+  --amarillo: #FFD23F;   /* botón principal y tarjeta Tardanzas */
+  --verde: #2ED47A;      /* tarjeta Presentes */
+  --coral: #FF4D6D;      /* tarjeta Faltaron */
+  --celeste: #4CC9FF;    /* tarjeta Trabajadores */
+  --hielo: #EAF0FF;      /* fondo claro */
+  --blanco: #FFFFFF;
+}
+   .pantalla-rostro {
   --foco: var(--menta);
 
   min-height: 100svh;

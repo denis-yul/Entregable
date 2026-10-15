@@ -1,7 +1,18 @@
 /* =========================================================
    PANTALLA 4: TABLA DE ASISTENCIA
    ========================================================= */
-.pantalla-registro {
+:root {
+  --tinta: #121B4D;      /* azul noche: textos y fondo de la pantalla de rostro */
+  --cobalto: #2347F5;    /* azul principal */
+  --menta: #35E8C0;      /* acento verde menta */
+  --amarillo: #FFD23F;   /* botón principal y tarjeta Tardanzas */
+  --verde: #2ED47A;      /* tarjeta Presentes */
+  --coral: #FF4D6D;      /* tarjeta Faltaron */
+  --celeste: #4CC9FF;    /* tarjeta Trabajadores */
+  --hielo: #EAF0FF;      /* fondo claro */
+  --blanco: #FFFFFF;
+}
+   .pantalla-registro {
   min-height: 100svh;
   display: grid;
   place-items: center;

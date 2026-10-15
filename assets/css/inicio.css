@@ -2,7 +2,18 @@
    PANTALLA 2: PANEL DE INICIO
    Celular: cuadrícula de 2 columnas (tarjetas 2x2).
    ========================================================= */
-.pantalla-panel {
+:root {
+  --tinta: #121B4D;      /* azul noche: textos y fondo de la pantalla de rostro */
+  --cobalto: #2347F5;    /* azul principal */
+  --menta: #35E8C0;      /* acento verde menta */
+  --amarillo: #FFD23F;   /* botón principal y tarjeta Tardanzas */
+  --verde: #2ED47A;      /* tarjeta Presentes */
+  --coral: #FF4D6D;      /* tarjeta Faltaron */
+  --celeste: #4CC9FF;    /* tarjeta Trabajadores */
+  --hielo: #EAF0FF;      /* fondo claro */
+  --blanco: #FFFFFF;
+}
+   .pantalla-panel {
   --margen: 1rem;
 
   min-height: 100svh;
