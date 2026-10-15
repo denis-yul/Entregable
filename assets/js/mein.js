@@ -137,13 +137,3 @@ async function iniciarCamara() {
     alert('No se pudo abrir la cámara. Revisa los permisos del navegador.');
   }
 }
-
-// Toma una foto del video (para enviarla a la detección de rostro)
-function capturarFoto() {
-  lienzo.width = video.videoWidth;
-  lienzo.height = video.videoHeight;
-  lienzo.getContext('2d').drawImage(video, 0, 0);
-  return lienzo.toDataURL('image/jpeg');
-}
-
-circulo?.addEventListener('click', iniciarCamara);
